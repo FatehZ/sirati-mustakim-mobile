@@ -10,9 +10,11 @@ plugins {
 buildscript {
     // ...
     val sqlDelightVersion = "1.5.5"
+//    val navVersion = "1.5.5"
 
     dependencies {
         // ...
+//        classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
         classpath("com.squareup.sqldelight:gradle-plugin:$sqlDelightVersion")
     }
 }

@@ -6,11 +6,6 @@ pluginManagement {
     }
 }
 
-plugins {
-    id("app.cash.sqldelight") version "2.0.0-alpha05"
-}
-
-
 dependencyResolutionManagement {
     repositories {
         google()

@@ -47,12 +47,19 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation("androidx.compose.ui:ui:1.4.3")
+                implementation("androidx.compose.ui:ui-tooling:1.4.3")
+                implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
+                implementation("androidx.compose.foundation:foundation:1.4.3")
+                implementation("androidx.compose.material:material:1.4.3")
+                implementation("androidx.activity:activity-compose:1.7.2")
+                implementation("io.ktor:ktor-server-core:2.3.1")
+                implementation("io.ktor:ktor-server-netty:2.3.1")
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
                 implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
         }
-        val iosMain by creating {
-            // ...
+        val iosMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
                 implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
