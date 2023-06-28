@@ -1,11 +1,9 @@
-package com.codingwithmitch.food2forkkmm.datasource.cache
+package com.ktxdevelopment.siratimustakim.datasource.cache
 
-import android.content.Context
-import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 
-actual class DriverFactory(private val context: Context) {
+actual class DriverFactory {
     actual fun createDriver(): SqlDriver {
-        return AndroidSqliteDriver(RecipeDatabase.Schema, context, "recipes.db")
+        return NativeSqliteDriver(RecipeDatabase.Schema, "recipes.db")
     }
 }
