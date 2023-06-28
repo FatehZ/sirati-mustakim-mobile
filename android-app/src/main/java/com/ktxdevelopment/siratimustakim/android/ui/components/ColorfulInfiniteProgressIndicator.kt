@@ -1,8 +1,23 @@
 package com.ktxdevelopment.siratimustakim.android.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.unit.dp
+import kotlin.math.roundToInt
+
 
 @Composable
 fun ColorfulInfiniteProgressIndicator(isDisplayed: Boolean, verticalBias: Float) {
+
+    val animatedColor by animateColorAsState(getProgressColor())
+
     if (isDisplayed) {
         Box(
             modifier = Modifier
@@ -24,4 +39,10 @@ fun ColorfulInfiniteProgressIndicator(isDisplayed: Boolean, verticalBias: Float)
             )
         }
     }
+}
+
+@Composable
+fun getProgressColor(): Color {
+    val color by animateColorAsState(Color.Red)
+    return color
 }
