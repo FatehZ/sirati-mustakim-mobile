@@ -19,6 +19,7 @@ kotlin {
 
     val coroutinesVersion = "1.6.4"
     val ktorVersion = "2.2.4"
+    val koinComposeVersion = "3.4.1"
     val sqlDelightVersion = "1.5.5"
     val dateTimeVersion = "0.4.0"
 
@@ -26,6 +27,7 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
+                implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
@@ -38,6 +40,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
                 implementation("androidx.compose.ui:ui:1.4.3")
                 implementation("androidx.compose.ui:ui-tooling:1.4.3")
                 implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")

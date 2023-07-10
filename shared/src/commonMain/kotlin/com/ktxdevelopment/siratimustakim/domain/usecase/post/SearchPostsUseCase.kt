@@ -5,11 +5,10 @@ import com.ktxdevelopment.siratimustakim.domain.repository.PostRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class GetPostByIdUseCase: KoinComponent {
-    private val repository: PostRepository by inject()
+class SearchPostsUseCase : KoinComponent {
+    private val repo: PostRepository by inject()
 
-    @Throws(Exception::class)
-    suspend operator fun invoke(page: Int): List<PostLit>{
-        return repository.getAllPosts(page = page)
+    suspend operator fun invoke(query: String): List<PostLit> {
+        return repo.search(query);
     }
 }
