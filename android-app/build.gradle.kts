@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace = "com.ktxdevelopment.siratimustakim.android"
-    compileSdk = 34
+    compileSdk = 33
     defaultConfig {
         applicationId = "com.ktxdevelopment.siratimustakim.android"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -54,11 +54,16 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.4.3")
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("io.ktor:ktor-client-android:2.2.4")
+    implementation("io.ktor:ktor-client-android:2.3.2")
 
-    implementation("io.insert-koin:koin-androidx-compose:$koinComposeVersion")
-    implementation("io.coil-kt:coil-compose:$coilVersion")
+
+    implementation("io.insert-koin:koin-androidx-compose:3.4.5")
+    implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
-    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
+
+    implementation("io.insert-koin:koin-core:$koinComposeVersion")
+    implementation("io.insert-koin:koin-test:$koinComposeVersion")
+    implementation("io.insert-koin:koin-android:$koinComposeVersion")
 
 }

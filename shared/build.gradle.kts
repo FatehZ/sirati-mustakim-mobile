@@ -10,7 +10,7 @@ kotlin {
     android {
         compilations.all { kotlinOptions { jvmTarget = "1.8" } }
     }
-    
+
     listOf(iosX64(), iosArm64(), iosSimulatorArm64()).forEach {
         it.binaries.framework {
             baseName = "shared"
@@ -19,6 +19,7 @@ kotlin {
 
     val coroutinesVersion = "1.6.4"
     val ktorVersion = "2.2.4"
+    val koinVersion = "3.4.1"
     val sqlDelightVersion = "1.5.5"
     val dateTimeVersion = "0.4.0"
 
@@ -33,6 +34,9 @@ kotlin {
                 implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("io.insert-koin:koin-test:$koinVersion")
+                implementation("io.insert-koin:koin-android:$koinVersion")
             }
         }
 
@@ -44,8 +48,8 @@ kotlin {
                 implementation("androidx.compose.foundation:foundation:1.4.3")
                 implementation("androidx.compose.material:material:1.4.3")
                 implementation("androidx.activity:activity-compose:1.7.2")
-                implementation("io.ktor:ktor-server-core:2.3.1")
-                implementation("io.ktor:ktor-server-netty:2.3.1")
+                implementation("io.ktor:ktor-server-core:2.3.2")
+                implementation("io.ktor:ktor-server-netty:2.3.2")
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
                 implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             }
@@ -62,8 +66,8 @@ kotlin {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core:2.3.1")
-    implementation("io.ktor:ktor-server-netty:2.3.1")
+    implementation("io.ktor:ktor-server-core:2.3.2")
+    implementation("io.ktor:ktor-server-netty:2.3.2")
 }
 
 android {
