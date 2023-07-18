@@ -1,10 +1,7 @@
 package com.ktxdevelopment.siratimustakim.domain.repository
 
-import com.ktxdevelopment.siratimustakim.domain.model.category.Category
-import com.ktxdevelopment.siratimustakim.domain.model.category.CategoryFull
 import com.ktxdevelopment.siratimustakim.domain.model.post.Post
 import com.ktxdevelopment.siratimustakim.domain.model.post.PostLit
-import com.ktxdevelopment.siratimustakim.domain.model.tag.Tag
 
 internal interface PostRepository {
 
@@ -13,4 +10,6 @@ internal interface PostRepository {
     suspend fun getPostById(postId: String): Post
 
     suspend fun getPostsByCategoryId(categoryId: String) : List<PostLit>
+
+    suspend fun search(query: String): List<PostLit>
 }

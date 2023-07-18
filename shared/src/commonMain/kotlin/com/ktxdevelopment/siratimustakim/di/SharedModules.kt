@@ -18,6 +18,7 @@ import com.ktxdevelopment.siratimustakim.domain.usecase.category.GetAllCategorie
 import com.ktxdevelopment.siratimustakim.domain.usecase.category.GetCategoryByIdUseCase
 import com.ktxdevelopment.siratimustakim.domain.usecase.post.GetPostsByCategoryIdUseCase
 import com.ktxdevelopment.siratimustakim.domain.usecase.post.GetPostsByTagIdUseCase
+import com.ktxdevelopment.siratimustakim.domain.usecase.post.SearchPostsUseCase
 import com.ktxdevelopment.siratimustakim.domain.usecase.tag.GetAllTagsUseCase
 import com.ktxdevelopment.siratimustakim.domain.usecase.tag.GetTagByIdUseCase
 import com.ktxdevelopment.siratimustakim.util.provideDispatcher
@@ -48,6 +49,7 @@ private val domainModule = module {
     factory { GetPostsByCategoryIdUseCase() }
     factory { GetPostsByTagIdUseCase() }
     factory { GetAllPostsPaginatedUseCase() }
+    factory { SearchPostsUseCase() }
 }
 
 private val sharedModules = listOf(domainModule, dataModule, utilityModule)
