@@ -8,19 +8,19 @@ plugins {
 
 android {
     namespace = "com.ktxdevelopment.siratimustakim.android"
-    compileSdk = 33
+    compileSdk = Versions.compileSdk
     defaultConfig {
         applicationId = "com.ktxdevelopment.siratimustakim.android"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
+        versionCode = App.versionCode
+        versionName = App.versionName
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = Versions.kotlinCompilerExtensionVersion
     }
     packaging {
         resources {
@@ -40,30 +40,46 @@ android {
         jvmTarget = "1.8"
     }
 }
+//
+//dependencies {
+//    val koinComposeVersion = "3.4.1"
+//    val coilVersion = "2.2.2"
+//    val accompanistVersion = "0.28.0"
+//    val navVersion = "2.5.3"
+//
+//    implementation(project(":shared"))
+//    implementation("androidx.compose.ui:ui:1.4.3")
+//    implementation("androidx.compose.ui:ui-tooling:1.4.3")
+//    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
+//    implementation("androidx.compose.foundation:foundation:1.4.3")
+//    implementation("androidx.compose.material:material:1.4.3")
+//    implementation("androidx.activity:activity-compose:1.7.2")
+//    implementation("io.ktor:ktor-client-android:2.3.2")
+//
+//
+//    implementation("io.insert-koin:koin-androidx-compose:3.4.5")
+//    implementation("io.coil-kt:coil-compose:2.4.0")
+//    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
+//    implementation("androidx.navigation:navigation-compose:2.6.0")
+//
+//    implementation("io.insert-koin:koin-core:$koinComposeVersion")
+//    implementation("io.insert-koin:koin-test:$koinComposeVersion")
+//    implementation("io.insert-koin:koin-android:$koinComposeVersion")
+//
+//}
 
 dependencies {
-    val koinComposeVersion = "3.4.1"
-    val coilVersion = "2.2.2"
-    val accompanistVersion = "0.28.0"
-    val navVersion = "2.5.3"
-
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
-    implementation("androidx.compose.foundation:foundation:1.4.3")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("io.ktor:ktor-client-android:2.3.2")
 
+    implementation(Libraries.koinAndroid)
 
-    implementation("io.insert-koin:koin-androidx-compose:3.4.5")
-    implementation("io.coil-kt:coil-compose:2.4.0")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
-    implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation(SupportLibraries.material)
 
-    implementation("io.insert-koin:koin-core:$koinComposeVersion")
-    implementation("io.insert-koin:koin-test:$koinComposeVersion")
-    implementation("io.insert-koin:koin-android:$koinComposeVersion")
-
+    implementation(Libraries.Compose.ui)
+    implementation(Libraries.Compose.lifecycle)
+    implementation(Libraries.Compose.material)
+    implementation(Libraries.Compose.uiToolingPreview)
+    implementation(Libraries.Compose.coil)
+    implementation(Libraries.Compose.activity)
+    implementation(Libraries.Compose.navigation)
 }

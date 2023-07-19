@@ -25,4 +25,9 @@ internal class PostService: KtorApi() {
     suspend fun getPostsByTagId(tagId: String): List<PostLit> = client.get {
         pathUrl("tags/${tagId}/posts")
     }.body()
+
+    suspend fun searchInPosts(query: String) : List<PostLit> = client.get {
+        pathUrl("search/post")
+        parameter("q", query)
+    }.body()
 }

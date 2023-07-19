@@ -11,5 +11,5 @@ internal class PostRepositoryImpl(private val remoteDateSource: PostDataSource):
     override suspend fun getPostById(postId: String): Post = remoteDateSource.getPost(postId)
 
     override suspend fun getPostsByCategoryId(categoryId: String): List<PostLit> = remoteDateSource.getPostsByCategoryId(categoryId)
-
+    override suspend fun search(query: String): List<PostLit> = remoteDateSource.search(query)
 }

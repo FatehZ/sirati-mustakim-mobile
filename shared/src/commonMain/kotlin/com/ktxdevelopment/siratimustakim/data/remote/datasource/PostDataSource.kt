@@ -24,4 +24,8 @@ internal class PostDataSource(
     suspend fun getPostsByTagId(tagId: String) = withContext(dispatcher.io) {
         postService.getPostsByTagId(tagId)
     }
+
+    suspend fun search(query: String)  = withContext(dispatcher.io) {
+        postService.searchInPosts(query)
+    }
 }
