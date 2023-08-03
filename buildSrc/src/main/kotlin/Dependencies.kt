@@ -4,9 +4,11 @@ object App {
 }
 
 object Versions {
+
     const val kotlin         = "1.8.22"
     const val gradle         = "8.0.2"
     const val sqlDelight     = "1.5.5"
+    const val sqlDriver      = "2.0.0"
 
     const val kotlinCompilerExtensionVersion = "1.4.8"
 
@@ -66,11 +68,13 @@ object Libraries {
     object Android {
         const val ktorClient = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val sqlDelight = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
+        const val sqlDriver = "app.cash.sqldelight:android-driver:${Versions.sqlDriver}"
     }
 
     object IOs {
         const val ktorClient = "io.ktor:ktor-client-darwin:${Versions.ktor}"
         const val sqlDelight = "com.squareup.sqldelight:native-driver:${Versions.sqlDelight}"
+        const val sqlDriver = "app.cash.sqldelight:native-driver:${Versions.sqlDriver}"
     }
 }
 

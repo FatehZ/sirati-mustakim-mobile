@@ -51,6 +51,7 @@ kotlin {
                 implementation(Libraries.Common.Ktor.serializationJson)
                 implementation(Libraries.Common.Ktor.logging)
                 implementation(Libraries.Common.sqlDelight)
+//                implementation(Libraries.Common.sqlDriver)
                 implementation(Libraries.Common.sqlDelightExtension)
                 implementation(Libraries.Common.kotlinxSerializationCore)
                 implementation(Libraries.Common.kotlinxCoroutinesCore)
@@ -67,6 +68,14 @@ kotlin {
             dependencies {
                 implementation(Libraries.Android.sqlDelight)
                 implementation(Libraries.Android.ktorClient)
+                implementation(Libraries.Android.sqlDriver)
+            }
+        }
+        val iosMain by getting {
+            dependencies {
+                implementation(Libraries.IOs.sqlDriver)
+                implementation(Libraries.IOs.sqlDelight)
+                implementation(Libraries.IOs.ktorClient)
             }
         }
 
@@ -112,8 +121,8 @@ android {
 }
 
 sqldelight {
-    database("AppDatabase") {
-        packageName = "com.ktxdevelopment.siratimustakim.shared.data_cache.sqldelight"
+    database("PostDatabase") {
+        packageName = "com.ktxdevelopment.siratimustakim.shared.cache.sqldelight"
         sourceFolders = listOf("kotlin")
     }
 }

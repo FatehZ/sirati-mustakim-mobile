@@ -7,10 +7,15 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import androidx.lifecycle.ViewModel
 import com.ktxdevelopment.siratimustakim.android.util.NetState
+import com.ktxdevelopment.siratimustakim.domain.usecase.category.GetAllCategoriesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class MainViewModel(context: Context) : ViewModel() {
+class MainViewModel(
+    context: Context,
+    val getAllCategoriesUseCase: GetAllCategoriesUseCase
+
+    ) : ViewModel() {
 
     private val _networkAvailable: MutableStateFlow<NetState> = MutableStateFlow(NetState.NetworkUnknown)
     val isNetworkOn: StateFlow<NetState> get() = _networkAvailable
@@ -36,4 +41,7 @@ class MainViewModel(context: Context) : ViewModel() {
         _networkAvailable.value = NetState.NetworkUnknown
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
     }
+
+
+
 }
