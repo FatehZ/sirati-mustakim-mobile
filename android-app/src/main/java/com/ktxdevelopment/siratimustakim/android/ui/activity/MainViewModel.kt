@@ -7,7 +7,7 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import androidx.lifecycle.ViewModel
 import com.ktxdevelopment.siratimustakim.android.util.NetState
-import com.ktxdevelopment.siratimustakim.domain.usecase.category.GetAllCategoriesUseCase
+import com.ktxdevelopment.siratimustakim.domain.remote.usecase.category.GetAllCategoriesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

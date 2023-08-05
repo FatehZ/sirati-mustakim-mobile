@@ -8,8 +8,8 @@ Notes :
 
 UseCase
 --->
-Service  
---->
 Repository && RepositoryImpl
+--->
+Service  
 --->
 API && LOCAL

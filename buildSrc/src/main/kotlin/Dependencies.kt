@@ -8,6 +8,7 @@ object Versions {
     const val kotlin         = "1.8.22"
     const val gradle         = "8.0.2"
     const val sqlDelight     = "1.5.5"
+    const val gson           = "2.8.8"
     const val sqlDriver      = "2.0.0"
 
     const val kotlinCompilerExtensionVersion = "1.4.8"
@@ -52,6 +53,7 @@ object Libraries {
 
     object Common {
         const val sqlDelight               = "com.squareup.sqldelight:runtime:${Versions.sqlDelight}"
+        const val gson                     = "com.google.code.gson:gson:${Versions.gson}"
         const val sqlDelightExtension      = "com.squareup.sqldelight:coroutines-extensions:${Versions.sqlDelight}"
         const val kotlinxSerializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinxSerializationCore}"
         const val kotlinxCoroutinesCore    = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
@@ -66,6 +68,8 @@ object Libraries {
     }
 
     object Android {
+//        const val gson
+        const val gson                     = "com.google.code.gson:gson:${Versions.gson}"
         const val ktorClient = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
         const val sqlDelight = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
         const val sqlDriver = "app.cash.sqldelight:android-driver:${Versions.sqlDriver}"

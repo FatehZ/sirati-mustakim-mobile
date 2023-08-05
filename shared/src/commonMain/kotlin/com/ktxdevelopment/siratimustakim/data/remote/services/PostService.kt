@@ -6,10 +6,11 @@ import com.ktxdevelopment.siratimustakim.domain.model.post.PostLit
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 
+
 internal class PostService: KtorApi() {
 
-    suspend fun getPostById(postId: String) : Post = client.get {
-        pathUrl("posts/${postId}")
+    suspend fun getPostById(id: String) : Post = client.get {
+        pathUrl("posts/${id}")
     }.body()
 
     suspend fun getAllPostsPaginated(page: Int, limit: Int = 20): List<PostLit> = client.get {
@@ -31,3 +32,4 @@ internal class PostService: KtorApi() {
         parameter("q", query)
     }.body()
 }
+

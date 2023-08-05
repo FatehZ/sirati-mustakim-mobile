@@ -6,15 +6,15 @@ import com.ktxdevelopment.siratimustakim.domain.model.tag.Tag
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Post(
-    var id: String? = null,
-    var title: String? = null,
+class PostEntity(
+    var id: String,
+    var title: String,
     var subtitle: String? = null,
-    var tags: List<Tag>? = null,
-    var category: Category? = null,
+    var tags: String?, // list of tags as json string
+    var category: String? = null, // category as json string
     var content: String? = null,
-    var author: AuthorLit? = null,
+    var author: String? = null, // author id
     var date: String? = null,
-    var references: List<String>? = null,
+    var references: String? = null, //
     var viewed: Long? = 0,
 )

@@ -1,6 +1,7 @@
-package com.ktxdevelopment.siratimustakim.data.remote.datasource
+package com.ktxdevelopment.siratimustakim.data.local.datasource
 
-import com.ktxdevelopment.siratimustakim.data.remote.services.PostService
+import com.ktxdevelopment.siratimustakim.data.local.services.PostService
+import com.ktxdevelopment.siratimustakim.domain.model.post.Post
 import com.ktxdevelopment.siratimustakim.util.Dispatcher
 import kotlinx.coroutines.withContext
 
@@ -13,19 +14,19 @@ internal class PostDataSource(
         postService.getAllPostsPaginated(page = page)
     }
 
-    suspend fun getPost(id: String) = withContext(dispatcher.io){
+    suspend fun getPostById(id: String) = withContext(dispatcher.io){
         postService.getPostById(id = id)
     }
 
-    suspend fun getPostsByCategoryId(categoryId: String) = withContext(dispatcher.io){
-        postService.getPostsByCategoryId(categoryId)
-    }
-
-    suspend fun getPostsByTagId(tagId: String) = withContext(dispatcher.io) {
-        postService.getPostsByTagId(tagId)
+    suspend fun insertPost(post: Post) = withContext(dispatcher.io) {
+        postService.insertPost(post)
     }
 
     suspend fun search(query: String)  = withContext(dispatcher.io) {
         postService.searchInPosts(query)
+    }
+
+    fun deletePost(id: String) {
+        postService.deletePostById(id)
     }
 }

@@ -51,6 +51,7 @@ kotlin {
                 implementation(Libraries.Common.Ktor.serializationJson)
                 implementation(Libraries.Common.Ktor.logging)
                 implementation(Libraries.Common.sqlDelight)
+//                implementation(Libraries.Common.gson)
 //                implementation(Libraries.Common.sqlDriver)
                 implementation(Libraries.Common.sqlDelightExtension)
                 implementation(Libraries.Common.kotlinxSerializationCore)
@@ -119,10 +120,13 @@ android {
         minSdk = Versions.minSdk
     }
 }
+dependencies {
+    implementation("com.google.firebase:protolite-well-known-types:18.0.0")
+}
 
 sqldelight {
     database("PostDatabase") {
-        packageName = "com.ktxdevelopment.siratimustakim.shared.cache.sqldelight"
-        sourceFolders = listOf("kotlin")
+        packageName = "com.ktxdevelopment.siratimustakim.shared.sqldelight"
+        sourceFolders = listOf("sqldelight")
     }
 }
