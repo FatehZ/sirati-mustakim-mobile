@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratimustakim.android.ui.activity
+package com.ktxdevelopment.siratimustakim.android.ui.activity.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

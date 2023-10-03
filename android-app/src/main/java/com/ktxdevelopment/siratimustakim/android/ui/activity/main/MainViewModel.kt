@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratimustakim.android.ui.activity
+package com.ktxdevelopment.siratimustakim.android.ui.activity.main
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -11,11 +11,7 @@ import com.ktxdevelopment.siratimustakim.domain.remote.usecase.category.GetAllCa
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class MainViewModel(
-    context: Context,
-    val getAllCategoriesUseCase: GetAllCategoriesUseCase
-
-    ) : ViewModel() {
+class MainViewModel(context: Context) : ViewModel() {
 
     private val _networkAvailable: MutableStateFlow<NetState> = MutableStateFlow(NetState.NetworkUnknown)
     val isNetworkOn: StateFlow<NetState> get() = _networkAvailable

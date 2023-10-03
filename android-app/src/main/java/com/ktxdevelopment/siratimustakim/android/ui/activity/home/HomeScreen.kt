@@ -1,4 +1,4 @@
 package com.ktxdevelopment.siratimustakim.android.ui.activity.home
 
-class HomeScreen {
+class HomeScreen(onSelectRecipe: (recipeId: Int) -> Unit, onTriggerEvent: () -> Unit) {
 }

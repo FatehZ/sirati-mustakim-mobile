@@ -1,0 +1,53 @@
+CREATE TABLE IF NOT EXISTS postEntity (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    subtitle TEXT NOT NULL,
+    tags TEXT,
+    category TEXT,
+    content TEXT NOT NULL,
+    author TEXT NOT NULL,
+    date TEXT NOT NULL,
+    reference TEXT,
+    viewed INTEGER DEFAULT 0 NOT NULL
+);
+
+deletePost:
+DELETE
+FROM postEntity
+WHERE id = ?;
+
+
+getAllPostsPaginated:
+SELECT id, title, subtitle
+FROM postEntity ORDER BY viewed LIMIT ? OFFSET ?;
+
+getAllPosts:
+SELECT id, title, subtitle
+FROM postEntity ORDER BY viewed;
+
+getPostById:
+SELECT *
+FROM postEntity
+WHERE id = ?;
+
+isPostSaved:
+SELECT EXISTS (SELECT 1 FROM postEntity WHERE id = ?) AS result;
+
+insertPost:
+INSERT OR REPLACE
+INTO postEntity(
+    id,
+    title,
+    subtitle,
+    tags,
+    category,
+    content,
+    author,
+    date,
+    reference
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+searchPost:
+SELECT id, title, subtitle
+FROM postEntity
+WHERE title LIKE ?;
