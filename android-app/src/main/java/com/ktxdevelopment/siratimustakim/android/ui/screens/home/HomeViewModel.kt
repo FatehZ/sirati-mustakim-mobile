@@ -1,9 +1,10 @@
-package com.ktxdevelopment.siratimustakim.android.ui.activity.home
+package com.ktxdevelopment.siratimustakim.android.ui.screens.home
 
 import android.app.Application
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
+import com.ktxdevelopment.siratimustakim.android.ui.activity.home.HomeScreenState
 import com.ktxdevelopment.siratimustakim.domain.remote.usecase.post.GetAllPostsPaginatedUseCase
 import com.ktxdevelopment.siratimustakim.domain.remote.usecase.post.SearchPostsUseCase
 

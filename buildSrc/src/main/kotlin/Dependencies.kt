@@ -7,7 +7,7 @@ object Versions {
 
     const val kotlin         = "1.8.22"
     const val gradle         = "8.0.2"
-    const val sqlDelight     = "1.5.4"
+    const val sqlDelight     = "1.5.5"
     const val gson           = "2.8.8"
     const val sqlDriver      = "2.0.0"
 

@@ -1,7 +1,6 @@
-package com.ktxdevelopment.siratimustakim.android.ui.activity.post
+package com.ktxdevelopment.siratimustakim.android.ui.activity.settings
 
 import android.app.Application
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,13 +13,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class PostDetailViewModel(
+class SettingsViewModel(
     private val isPostSavedLocally: CheckPostSavedLocalUsecase,
     private val savePostLocalUsecase: SavePostLocalUsecase,
     private val deletePostLocalUsecase: DeletePostLocalUsecase,
     application: Application) : AndroidViewModel(application) {
 
-    var state: MutableState<PostDetailScreenState> = mutableStateOf(PostDetailScreenState())
+    public var state by mutableStateOf(SettingsScreenState())
         private set
 
 
@@ -43,6 +42,6 @@ class PostDetailViewModel(
     }
 
     private fun saveStateChangingUI() {
-        state = state.copy(postSavedState = PostDetailSavedState.LOADING)
+        state = state.copy(postSavedState = SettingsSavedState.LOADING)
     }
 }
