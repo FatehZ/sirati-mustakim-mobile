@@ -23,9 +23,9 @@ internal class PostLocalService(db: PostDatabase) {
         emit(Resource.Success(res.toPost()))
     }
 
-    suspend fun getAllPostsPaginated(page: Int, limit: Int = 20): Flow<Resource<List<PostLit>>> =
+    suspend fun getAllPostsPaginated(p: Int, l: Int = 20): Flow<Resource<List<PostLit>>> =
         flow {
-            val res = queries.getAllPostsPaginated(page.toLong(), limit.toLong())
+            val res = queries.getAllPosts()
                 .executeAsList()
                 .map { it.toPostLit() }
             emit(Resource.Success(res))

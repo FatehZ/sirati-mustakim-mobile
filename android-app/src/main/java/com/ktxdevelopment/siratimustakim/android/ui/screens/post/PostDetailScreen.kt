@@ -1,4 +1,15 @@
-package com.ktxdevelopment.siratimustakim.android.ui.activity.post
+package com.ktxdevelopment.siratimustakim.android.ui.screens.post
 
-class PostDetailScreen {
+import androidx.compose.runtime.Composable
+import com.ktxdevelopment.siratimustakim.android.nav.NetType
+import kotlin.reflect.KFunction1
+
+@Composable
+fun PostDetailScreen(
+    state: PostDetailScreenState,
+    onTriggerEvent: KFunction1<PostDetailScreenEvents, Unit>,
+    postId: String,
+    netType: NetType
+) {
+
 }

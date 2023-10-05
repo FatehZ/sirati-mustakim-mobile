@@ -13,9 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(context: Context) : ViewModel() {
 
-    private val _networkAvailable: MutableStateFlow<NetState> = MutableStateFlow(NetState.NetworkUnknown)
-    val isNetworkOn: StateFlow<NetState> get() = _networkAvailable
-
+    var networkAvailable: MutableStateFlow<NetState> = MutableStateFlow(NetState.NetworkUnknown)
+        private set
 
     private val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     private val networkRequest: NetworkRequest = NetworkRequest.Builder().addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build()
@@ -24,20 +23,17 @@ class MainViewModel(context: Context) : ViewModel() {
         object : ConnectivityManager.NetworkCallback() {
             override fun onLost(network: Network) {
                 super.onLost(network)
-                _networkAvailable.value = NetState.NetworkOff
+                networkAvailable.value = NetState.NetworkOff
             }
 
             override fun onAvailable(network: Network) {
                 super.onAvailable(network)
-                _networkAvailable.value = NetState.NetworkOn
+                networkAvailable.value = NetState.NetworkOn
             }
         }
 
     fun registerCallback() {
-        _networkAvailable.value = NetState.NetworkUnknown
+        networkAvailable.value = NetState.NetworkUnknown
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
     }
-
-
-
 }

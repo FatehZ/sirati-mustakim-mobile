@@ -16,11 +16,6 @@ DELETE
 FROM postEntity
 WHERE id = ?;
 
-
-getAllPostsPaginated:
-SELECT id, title, subtitle
-FROM postEntity ORDER BY viewed LIMIT ? OFFSET ?;
-
 getAllPosts:
 SELECT id, title, subtitle
 FROM postEntity ORDER BY viewed;
@@ -29,6 +24,12 @@ getPostById:
 SELECT *
 FROM postEntity
 WHERE id = ?;
+
+
+getAllPostsPaginated:
+SELECT id, title, subtitle
+FROM postEntity ORDER BY viewed LIMIT 20 OFFSET 0;
+
 
 isPostSaved:
 SELECT EXISTS (SELECT 1 FROM postEntity WHERE id = ?) AS result;

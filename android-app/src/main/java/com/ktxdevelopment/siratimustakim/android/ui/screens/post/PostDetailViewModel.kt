@@ -48,4 +48,8 @@ class PostDetailViewModel(
     private fun getPostByIdLocally() {
 
     }
+
+    fun onTriggerEvent(event: PostDetailScreenEvents) {
+        TODO("Not yet implemented")
+    }
 }
