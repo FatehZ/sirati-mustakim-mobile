@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratimustakim.android.ui.screens.home
+package com.ktxdevelopment.siratimustakim.android.ui.screens.postlist
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class PostListViewModel(
     application: Application,
 //    private val searchPostsUseCase: SearchPostsUseCase,
     private val getAllPostsUseCase: GetAllPostsPaginatedUseCase
@@ -19,23 +19,23 @@ class HomeViewModel(
 
 
 
-    val state: MutableStateFlow<HomeScreenState> = MutableStateFlow(HomeScreenState())
+    val state: MutableStateFlow<PostListScreenState> = MutableStateFlow(PostListScreenState())
     private var getPostsJob: Job? = null
 
-    init { getPostsRemote() }
+    init { getPostsRemote(0) }
 
-    fun onTriggerEvent(event: HomeEvent) {
+    fun onTriggerEvent(event: PostListEvent) {
         when (event) {
-            is HomeEvent.LoadPostsNextPage -> {
-                getPostsRemote()
+            is PostListEvent.LoadPostsNextPage -> {
+                getPostsRemote(event.page)
             }
         }
     }
 
-    private fun getPostsRemote() {
+    private fun getPostsRemote(page: Int) {
         getPostsJob?.cancel()
         viewModelScope.launch {
-            getPostsJob = getAllPostsUseCase.invoke(20).onEach { result ->
+            getPostsJob = getAllPostsUseCase.invoke(page).onEach { result ->
                 when(result) {
                     is Resource.Success -> state.value = state.value.copy(posts = result.data)
                     is Resource.Failure -> Unit //todo

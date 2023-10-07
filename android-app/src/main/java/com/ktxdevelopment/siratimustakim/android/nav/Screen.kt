@@ -3,7 +3,8 @@ package com.ktxdevelopment.siratimustakim.android.nav
 sealed class Screen(
     val route: String
 ){
-    object Home: Screen("home")
+//    object Home: Screen("home")
+    object PostList: Screen("postlist")
 
     object PostDetail: Screen("postdetail")
 
