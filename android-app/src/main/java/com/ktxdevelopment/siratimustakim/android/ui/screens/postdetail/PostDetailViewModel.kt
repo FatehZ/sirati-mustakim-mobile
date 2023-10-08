@@ -25,14 +25,14 @@ class PostDetailViewModel(
     private val getPostByIdRemoteUseCase: GetPostByIdUseCase,
     private val savePostLocalUsecase: SavePostLocalUsecase,
     private val deletePostLocalUsecase: DeletePostLocalUsecase,
-    application: Application) : AndroidViewModel(application) {
+    application: Application) :     AndroidViewModel(application) {
 
-    var state: MutableStateFlow<PostDetailScreenState> = MutableStateFlow(PostDetailScreenState())
+    var state: MutableStateFlow<PostDetailScreenState> = MutableStateFlow(PostDetailScreenState(uiState = UiState.Loading(), savedState = UiState.Loading()))
         private set
 
     private var getPostLocalJob: Job? = null
     private var getPostRemoteJob: Job? = null
-    private var getPostSavedState: Job? = null
+    private var getPostSavedStateJob: Job? = null
 
 
     private fun savePost() {
@@ -44,6 +44,7 @@ class PostDetailViewModel(
     }
 
     private fun getPostSavedState(id: String) {
+        getPostSavedStateJob?.cancel()
         viewModelScope.launch {
             getPostLocalJob = isPostSavedLocally.invoke(id).onEach { result ->
                 when(result) {
@@ -63,12 +64,13 @@ class PostDetailViewModel(
     }
 
     private fun saveStateChangingUI() {
-        state.value = state.value.copy(postSavedState = PostDetailSavedState.LOADING)
+        state.value = state.value.copy(savedState = UiState.Loading())
     }
 
     private fun getPostById(id: String, netType: NetType) {
         if (netType == NetType.LOCAL) getPostByIdLocally(id)
         else getPostByIdRemote(id)
+        getPostSavedState(id)
     }
 
     private fun getPostByIdLocally(id: String) {

@@ -3,6 +3,7 @@ package com.ktxdevelopment.siratimustakim.android.ui.screens.postlist
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.ktxdevelopment.siratimustakim.android.util.UiState
 import com.ktxdevelopment.siratimustakim.domain.model.util.Resource
 import com.ktxdevelopment.siratimustakim.domain.remote.usecase.post.GetAllPostsPaginatedUseCase
 import kotlinx.coroutines.Job
@@ -17,12 +18,8 @@ class PostListViewModel(
     private val getAllPostsUseCase: GetAllPostsPaginatedUseCase
 ) : AndroidViewModel(application) {
 
-
-
     val state: MutableStateFlow<PostListScreenState> = MutableStateFlow(PostListScreenState())
     private var getPostsJob: Job? = null
-
-    init { getPostsRemote(0) }
 
     fun onTriggerEvent(event: PostListEvent) {
         when (event) {
@@ -37,8 +34,8 @@ class PostListViewModel(
         viewModelScope.launch {
             getPostsJob = getAllPostsUseCase.invoke(page).onEach { result ->
                 when(result) {
-                    is Resource.Success -> state.value = state.value.copy(posts = result.data)
-                    is Resource.Failure -> Unit //todo
+                    is Resource.Success -> state.value = state.value.copy(uiState = UiState.Success(result.data))
+                    is Resource.Failure -> state.value = state.value.copy(uiState = UiState.Failure(error = result.error))
                 }
             }.launchIn(this)
         }

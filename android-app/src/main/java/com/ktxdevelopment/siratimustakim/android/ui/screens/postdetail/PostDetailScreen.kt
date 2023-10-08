@@ -1,6 +1,5 @@
 package com.ktxdevelopment.siratimustakim.android.ui.screens.postdetail
 
-import android.text.SpannableString
 import android.webkit.WebView
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,20 +11,27 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ktxdevelopment.siratimustakim.android.util.NetType
+import com.ktxdevelopment.siratimustakim.android.util.UiState
+import com.ktxdevelopment.siratimustakim.domain.model.post.Post
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.reflect.KFunction1
 
 @Composable
 fun PostDetailScreen(
-    state: PostDetailScreenState,
+    mState: MutableStateFlow<PostDetailScreenState>,
     onTriggerEvent: KFunction1<PostDetailEvent, Unit>,
     postId: String,
     netType: NetType
 ) {
+
+    val state = mState.collectAsState().value.uiState
+    val savedState = mState.collectAsState().value.savedState
+    val dataType = mState.collectAsState().value.dataType
 
     LaunchedEffect(key1 = true) {
         onTriggerEvent(PostDetailEvent.GetPostEvent(postId, netType))
@@ -36,24 +42,38 @@ fun PostDetailScreen(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
-        // Use LazyColumn for better performance with large content
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            // Display the title with a larger font
-            item {
-                Text(
-                    text = state.post?.title ?: "",
-                    style = MaterialTheme.typography.h4,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
+
+
+        when (state) {
+            is UiState.Loading -> {
+                // Use LazyColumn for better performance with large content
+
             }
 
-            // Display the content parsed from HTML
-            item {
-                ParsedHtmlContent(html = state.post?.content ?: "")
+            is UiState.Failure -> {
+
+            }
+
+            is UiState.Success<Post> -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                ) {
+                    // Display the title with a larger font
+                    item {
+                        Text(
+                            text = state.data.title.toString(),
+                            style = MaterialTheme.typography.h4,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                    }
+
+                    // Display the content parsed from HTML
+                    item {
+                        ParsedHtmlContent(html = state.data.content ?: "")
+                    }
+                }
             }
         }
     }
