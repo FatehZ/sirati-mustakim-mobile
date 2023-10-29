@@ -8,4 +8,4 @@ internal val dbModule = module {
     single { DriverFactory() }
 }
 
-
+fun getDbModule() = dbModule

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 internal interface PostLocalRepository {
 
-    suspend fun getAllPosts(page: Int): Flow<Resource<List<PostLit>>>
+    suspend fun getAllPosts(): Flow<Resource<List<PostLit>>>
 
     suspend fun getPostById(id: String): Flow<Resource<Post>>
 

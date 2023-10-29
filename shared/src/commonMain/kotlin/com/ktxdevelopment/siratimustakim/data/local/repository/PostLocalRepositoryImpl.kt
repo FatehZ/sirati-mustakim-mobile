@@ -11,8 +11,8 @@ import kotlinx.coroutines.withContext
 
 internal class PostLocalRepositoryImpl(private val dispatcher: Dispatcher, private val localDateSource: PostLocalService): PostLocalRepository {  //setup localDataSource
 
-    override suspend fun getAllPosts(page: Int): Flow<Resource<List<PostLit>>> = withContext(dispatcher.io) {
-        localDateSource.getAllPostsPaginated(page)
+    override suspend fun getAllPosts(): Flow<Resource<List<PostLit>>> = withContext(dispatcher.io) {
+        localDateSource.getAllPostsPaginated()
     }
 
     override suspend fun getPostById(id: String): Flow<Resource<Post>> = withContext(dispatcher.io) {

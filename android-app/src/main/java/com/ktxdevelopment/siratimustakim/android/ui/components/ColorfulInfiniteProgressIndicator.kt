@@ -16,7 +16,7 @@ import kotlin.math.roundToInt
 @Composable
 fun ColorfulInfiniteProgressIndicator(isDisplayed: Boolean, verticalBias: Float) {
 
-    val animatedColor by animateColorAsState(getProgressColor())
+    val animatedColor by animateColorAsState(getProgressColor(), label = "animatedColor")
 
     if (isDisplayed) {
         Box(

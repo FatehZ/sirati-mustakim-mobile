@@ -13,7 +13,7 @@ internal interface PostRepository {
 
     suspend fun getPostsByCategoryId(categoryId: String) : Flow<Resource<List<PostLit>>>
 
-    suspend fun getPostsByTagId(categoryId: String) : Flow<Resource<List<PostLit>>>
+    suspend fun getPostsByTagId(tagId: String) : Flow<Resource<List<PostLit>>>
 
     suspend fun search(query: String): Flow<Resource<List<PostLit>>>
 }

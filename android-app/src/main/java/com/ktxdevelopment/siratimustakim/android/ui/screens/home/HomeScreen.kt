@@ -9,11 +9,13 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -23,18 +25,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.ktxdevelopment.siratimustakim.android.R
 import com.ktxdevelopment.siratimustakim.android.nav.Navigation
+import com.ktxdevelopment.siratimustakim.android.ui.activity.main.MainActivity
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(mainActivity: MainActivity) {
 
     var onTopBarIconClick by remember { mutableStateOf({})}
-    var iconDrawable by remember { mutableStateOf(androidx.core.R.drawable.notification_icon_background) }
+    var iconDrawable by remember { mutableIntStateOf(R.drawable.ic_back) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {
+                title ={ Text("SM Mobile App") },
+                navigationIcon = {
                     Image(
                         painterResource(id = iconDrawable),
                         contentDescription = null,
@@ -55,8 +59,7 @@ fun HomeScreen() {
         Column(
             Modifier.padding(padding)
         ) {
-            Navigation(setOnTopBarIconClick = { action -> onTopBarIconClick = action }, onUpdateIcon = { icon -> iconDrawable = icon })
-            
+            Navigation(mainActivity, setOnTopBarIconClick = { action -> onTopBarIconClick = action }, onUpdateIcon = { icon -> iconDrawable = icon })
         }
     }
 }

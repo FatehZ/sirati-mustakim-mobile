@@ -10,7 +10,7 @@ plugins {
 kotlin {
     targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all { kotlinOptions { jvmTarget = "1.8" } }
     }
 
@@ -36,11 +36,11 @@ kotlin {
     }
 
 
-    val coroutinesVersion = "1.6.4"
-    val ktorVersion = "2.2.4"
-    val koinVersion = "3.4.1"
-    val sqlDelightVersion = "1.5.5"
-    val dateTimeVersion = "0.4.0"
+//    val coroutinesVersion = "1.6.4"
+//    val ktorVersion = "2.2.4"
+//    val koinVersion = "3.4.1"
+//    val sqlDelightVersion = "1.5.5"
+//    val dateTimeVersion = "0.4.0"
 
 
     sourceSets {
@@ -57,6 +57,7 @@ kotlin {
                 implementation(Libraries.Common.kotlinxSerializationCore)
                 implementation(Libraries.Common.kotlinxCoroutinesCore)
                 implementation(Libraries.Common.koinCore)
+//                implementation(Libraries.Common.koinViewModel)
             }
         }
         val commonTest by getting {

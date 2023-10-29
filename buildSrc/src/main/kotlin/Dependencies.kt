@@ -5,13 +5,13 @@ object App {
 
 object Versions {
 
-    const val kotlin         = "1.8.22"
-    const val gradle         = "8.0.2"
+    const val kotlin         = "1.9.10"
+    const val gradle         = "8.1.2"
     const val sqlDelight     = "1.5.5"
     const val gson           = "2.8.8"
     const val sqlDriver      = "2.0.0"
 
-    const val kotlinCompilerExtensionVersion = "1.4.8"
+    const val kotlinCompilerExtensionVersion = "1.5.3"
 
     const val composeUi       = "1.4.3"
     const val composeMaterial = "1.4.3"
@@ -23,23 +23,25 @@ object Versions {
     const val material        = "1.9.0"
 
     const val coroutines  = "1.7.1"
-    const val koinAndroid = "3.4.2"
-    const val koinCore    = "3.4.2"
+    const val koinAndroid = "3.5.0"
+    const val koinCore    = "3.5.0"
     const val ktor        = "2.3.2"
 
     const val minSdk     = 23
-    const val compileSdk = 33
-    const val targetSdk  = 33
+    const val compileSdk = 34
+    const val targetSdk  = 34
 
     const val kotlinxSerializationCore = "1.5.1"
 }
 
 object Libraries {
     const val kotlin                = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val kotlinSerialization   = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
+//    const val kotlinSerialization   = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
     const val gradle                = "com.android.tools.build:gradle:${Versions.gradle}"
     const val sqlDelight            = "com.squareup.sqldelight:gradle-plugin:${Versions.sqlDelight}"
     const val koinAndroid           = "io.insert-koin:koin-android:${Versions.koinAndroid}"
+    const val koinCompose           = "io.insert-koin:koin-androidx-compose:${Versions.koinAndroid}"
+
 
     object Compose {
         const val ui               = "androidx.compose.ui:ui:${Versions.composeUi}"
@@ -69,10 +71,10 @@ object Libraries {
 
     object Android {
 //        const val gson
-        const val gson                     = "com.google.code.gson:gson:${Versions.gson}"
-        const val ktorClient = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
-        const val sqlDelight = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
-        const val sqlDriver = "app.cash.sqldelight:android-driver:${Versions.sqlDriver}"
+        const val gson        = "com.google.code.gson:gson:${Versions.gson}"
+        const val ktorClient  = "io.ktor:ktor-client-okhttp:${Versions.ktor}"
+        const val sqlDelight  = "com.squareup.sqldelight:android-driver:${Versions.sqlDelight}"
+        const val sqlDriver   = "app.cash.sqldelight:android-driver:${Versions.sqlDriver}"
     }
 
     object IOs {

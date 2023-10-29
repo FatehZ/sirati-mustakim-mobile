@@ -8,23 +8,27 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ktxdevelopment.siratimustakim.android.R
+import com.ktxdevelopment.siratimustakim.android.ui.activity.main.MainActivity
 import com.ktxdevelopment.siratimustakim.android.ui.screens.postlist.PostListScreen
 import com.ktxdevelopment.siratimustakim.android.ui.screens.postlist.PostListViewModel
 import com.ktxdevelopment.siratimustakim.android.ui.screens.postdetail.PostDetailScreen
 import com.ktxdevelopment.siratimustakim.android.ui.screens.postdetail.PostDetailViewModel
 import com.ktxdevelopment.siratimustakim.android.util.NetType
 import com.ktxdevelopment.siratimustakim.android.util.checkNetType
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @Composable
-fun Navigation(setOnTopBarIconClick: (action: () -> Unit) -> Unit, onUpdateIcon: (drawable: Int) -> Unit) {
+fun Navigation(mainActivity: MainActivity, setOnTopBarIconClick: (action: () -> Unit) -> Unit, onUpdateIcon: (drawable: Int) -> Unit) {
 
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.PostList.route) {
 
         composable(route = Screen.PostList.route) { navBackStackEntry ->
-            val viewModel: PostListViewModel = ViewModelProvider(navBackStackEntry)[PostListViewModel::class.java]
+
+            val viewModel: PostListViewModel by mainActivity.viewModel()
+
             setOnTopBarIconClick {}
             PostListScreen(mState = viewModel.state, onTriggerEvent = viewModel::onTriggerEvent) { postId, netType ->
                 navController.navigate("${Screen.PostDetail.route}/$postId?netType=${netType.name}")

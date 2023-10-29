@@ -11,7 +11,7 @@ class GetAllPostsLocalUsecase: KoinComponent {
     private val repository: PostLocalRepository by inject()
 
     @Throws(Exception::class)
-    suspend operator fun invoke(page: Int): Flow<Resource<List<PostLit>>> {
-        return repository.getAllPosts(page)
+    suspend operator fun invoke(): Flow<Resource<List<PostLit>>> {
+        return repository.getAllPosts()
     }
 }
