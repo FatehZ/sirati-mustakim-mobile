@@ -32,12 +32,12 @@ import com.ktxdevelopment.siratimustakim.android.ui.activity.main.MainActivity
 fun HomeScreen(mainActivity: MainActivity) {
 
     var onTopBarIconClick by remember { mutableStateOf({})}
-    var iconDrawable by remember { mutableIntStateOf(R.drawable.ic_back) }
+    var iconDrawable by remember { mutableIntStateOf(R.mipmap.ic_launcher_round) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title ={ Text("SM Mobile App") },
+                title = { Text("SM Mobile App") },
                 navigationIcon = {
                     Image(
                         painterResource(id = iconDrawable),

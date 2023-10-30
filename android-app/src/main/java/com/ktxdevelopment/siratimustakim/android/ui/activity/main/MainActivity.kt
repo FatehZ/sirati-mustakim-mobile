@@ -7,7 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import com.ktxdevelopment.siratimustakim.android.ui.screens.home.HomeScreen
+import com.ktxdevelopment.siratimustakim.android.nav.BaseNavigation
 
 class MainActivity : ComponentActivity() {
 
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun SMAppMainTheme(mainActivity: MainActivity) {
 
-    Surface(color = MaterialTheme.colors.background) {
-        HomeScreen(mainActivity)
+        Surface(color = MaterialTheme.colors.background) {
+            BaseNavigation(mainActivity)
     }
 }

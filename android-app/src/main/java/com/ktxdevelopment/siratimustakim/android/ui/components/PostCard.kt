@@ -1,6 +1,7 @@
 package com.ktxdevelopment.siratimustakim.android.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -14,11 +15,14 @@ import com.ktxdevelopment.siratimustakim.android.ui.screens.postdetail.ParsedHtm
 import com.ktxdevelopment.siratimustakim.domain.model.post.PostLit
 
 @Composable
-fun PostCard(post: PostLit) {
+fun PostCard(post: PostLit, onClickPost: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .clickable(onClick = {
+                onClickPost(post.id)
+            })
             .background(MaterialTheme.colors.background),
         elevation = 4.dp
     ) {
@@ -42,13 +46,11 @@ fun PostCard(post: PostLit) {
                 ),
                 maxLines = 1
             )
-            ParsedHtmlContent(html = post.subtitle)
         }
     }
 }
 @Preview("PostCard")
 @Composable
 fun PostCardPreview() {
-    PostCard(PostLit("12","Uhud War", "Failure of Ideals : Feadilsm and Soscial structure"))
 
 }

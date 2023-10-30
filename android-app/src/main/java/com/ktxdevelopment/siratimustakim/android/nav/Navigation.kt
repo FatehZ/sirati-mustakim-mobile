@@ -1,7 +1,6 @@
 package com.ktxdevelopment.siratimustakim.android.nav
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,15 +22,17 @@ fun Navigation(mainActivity: MainActivity, setOnTopBarIconClick: (action: () -> 
 
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.PostList.route) {
+    NavHost(navController = navController, startDestination = Screen.RemoteAllPostList.route) {
 
-        composable(route = Screen.PostList.route) { navBackStackEntry ->
+        composable(route = Screen.RemoteAllPostList.route) { navBackStackEntry ->
 
             val viewModel: PostListViewModel by mainActivity.viewModel()
 
             setOnTopBarIconClick {}
-            PostListScreen(mState = viewModel.state, onTriggerEvent = viewModel::onTriggerEvent) { postId, netType ->
-                navController.navigate("${Screen.PostDetail.route}/$postId?netType=${netType.name}")
+            onUpdateIcon(R.mipmap.ic_launcher_round)
+
+            PostListScreen(mState = viewModel.state, onTriggerEvent = viewModel::onTriggerEvent) { postId ->
+                navController.navigate("${Screen.PostDetail.route}/$postId?netType=${NetType.REMOTE.name}")
             }
         }
 
@@ -42,29 +43,27 @@ fun Navigation(mainActivity: MainActivity, setOnTopBarIconClick: (action: () -> 
                 navArgument("postId") { type = NavType.StringType },
                 navArgument("netType") { type = NavType.StringType })
         ) { navBackStackEntry ->
-//            val factory = ViewModelFactory(LocalContext.current, navBackStackEntry)
-//            val viewModel: PostDetailViewModel = viewModel("PostDetailViewModel", factory)
 
-            setOnTopBarIconClick { navController.navigate(Screen.PostList.route) }
+            setOnTopBarIconClick { navController.navigate(Screen.RemoteAllPostList.route) }
             onUpdateIcon(R.drawable.ic_back)
 
             var postId = ""
             navBackStackEntry.arguments?.getString("postId").let {
                 if (!it.isNullOrBlank()) postId = it
-                else navController.navigate(Screen.PostList.route)
+                else navController.navigate(Screen.RemoteAllPostList.route)
             }
 
             val netType: String = navBackStackEntry.arguments?.getString("netType") ?: NetType.REMOTE.name
 
-            val postViewModel: PostDetailViewModel = ViewModelProvider(navBackStackEntry)[PostDetailViewModel::class.java]
+            val postViewModel: PostDetailViewModel by mainActivity.viewModel()
 
             PostDetailScreen(
                 mState = postViewModel.state,
                 onTriggerEvent = postViewModel::onTriggerEvent,
                 postId = postId,
                 netType = checkNetType(netType)
-//                onNavigateBack =
-            )
+            ) {
+                navController.navigate(Screen.RemoteAllPostList.route) }
         }
     }
 }

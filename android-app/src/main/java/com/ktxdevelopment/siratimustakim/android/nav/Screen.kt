@@ -4,7 +4,7 @@ sealed class Screen(
     val route: String
 ){
 //    object Home: Screen("home")
-    object PostList: Screen("postlist")
+    object RemoteAllPostList: Screen("remoteallpostlist")
 
     object PostDetail: Screen("postdetail")
 

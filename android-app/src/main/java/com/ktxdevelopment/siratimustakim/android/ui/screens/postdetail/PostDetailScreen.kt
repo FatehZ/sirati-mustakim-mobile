@@ -26,7 +26,8 @@ fun PostDetailScreen(
     mState: MutableStateFlow<PostDetailScreenState>,
     onTriggerEvent: KFunction1<PostDetailEvent, Unit>,
     postId: String,
-    netType: NetType
+    netType: NetType,
+    onNavigateBack: () -> Unit
 ) {
 
     val state = mState.collectAsState().value.uiState
